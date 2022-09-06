@@ -1,0 +1,103 @@
+﻿@page "/current"
+
+@using SysmUM.Services
+@using SysmUM.Data
+@using SysmumDataAccessLibrary.Models
+@using SysmumDataAccessLibrary
+@using System;
+@using System.Collections.Generic;
+@using Newtonsoft.Json;
+@inject SeismService  Service
+@inject ISeismData _db
+@inject IJSRuntime JSRuntime
+
+
+<div class="w3-row" style="padding-left:2%; padding-right:2%; padding-top:1% ">
+    <div class="w3-third w3-container">
+        <h1 style="font-size: 250%; font-weight: 600">Recent Seismic Activity</h1>
+
+        <h2 style="font-size: 120%; font-weight: 600">@nrEqks Earthquakes</h2>
+        
+        @if (seisms == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {   
+    <div style="overflow: auto; height: 570px" class="full-height" >
+        <table class="w3-table w3-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Magnitude</th>
+                    <th>Place</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var seism in seisms)
+                {
+                    <tr>
+                        <th>@seism.dateSeism</th>
+                        <th>@seism.magnitude</th>
+                        <th>@seism.place</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+        }
+    </div>
+    <div class="w3-twothird w3-container">
+        <div id="mymap" style="height: 650px"> </div>
+    </div>
+    </div>
+    @code {
+        private List<SeismModel> seisms;
+        private List<string> parseS;
+        private string str;
+        private int nrEqks;
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await updateListHour();
+                await JSRuntime.InvokeVoidAsync("getMap", null);
+                foreach (var s in parseS)
+                {
+                    await JSRuntime.InvokeVoidAsync("addPin", s);
+                }
+            }
+        }
+
+
+        protected override async Task OnInitializedAsync()
+        {
+            //updateListHour();
+        }
+
+
+        private async Task<bool> updateListHour()
+        {
+            List<SeismModel> seismsdata = await Service.GetSeismsLastHour();
+            parseS = new List<string>();
+            foreach (var seism in seismsdata)
+            {
+                await _db.InsertSeism(seism);
+                Seism s = new Seism();
+                s.latitude = seism.latitude;
+                s.longitude = seism.longitude;
+                s.description = "";
+                s.title = seism.place;
+                str = JsonConvert.SerializeObject(s);
+                parseS.Add(str);
+            }
+            seisms = seismsdata;
+            seisms.Sort((x, y) => y.dateSeism.CompareTo(x.dateSeism));
+            nrEqks = seisms.Count;
+            await base.InvokeAsync(StateHasChanged);
+            return true;
+        }
+
+
+    }

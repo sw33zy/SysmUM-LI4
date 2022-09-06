@@ -1,0 +1,48 @@
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.deps.json
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.pdb
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csprojAssemblyReference.cache
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfoInputs.cache
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfo.cs
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\marti\Desktop\SEEN\3ºANO\2º SEMESTRE\LABORATÓRIOS DE INFORMÁTICA IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.pdb
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.deps.json
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.dll
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.pdb
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csprojAssemblyReference.cache
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfoInputs.cache
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfo.cs
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csproj.CoreCompileInputs.cache
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.dll
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+D:\Uni\LI4\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.pdb
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.deps.json
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.pdb
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csproj.AssemblyReference.cache
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfoInputs.cache
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfo.cs
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\joaom\Desktop\Uni\3º ano\2º semestre\Laboratórios de Informática IV\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.pdb
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.deps.json
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Debug\net5.0\SysmumDataAccessLibrary.pdb
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csprojAssemblyReference.cache
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfoInputs.cache
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.AssemblyInfo.cs
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Debug\net5.0\SysmumDataAccessLibrary.pdb

@@ -1,0 +1,113 @@
+﻿@page "/queries"
+@using SysmumDataAccessLibrary.Models
+@using SysmumDataAccessLibrary
+@inject ISeismData _db
+
+<div class="w3-container">
+    <h1 style="font-size: 300%; font-weight: 600"> Seismic Activity</h1>
+    <div>
+        <div class="w3-row">
+            <div class="w3-container w3-quarter">
+                <label for="latitude"><b>Latitude</b></label> <br>
+                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" style="width: 80%" placeholder=@latitude @bind="latitude" />&nbsp;
+            </div>
+            <div class="w3-container w3-quarter">
+                <label for="longitude"><b>Longitude</b></label> <br>
+                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" style="width: 80%" placeholder=@longitude @bind="longitude" />&nbsp;
+            </div>
+            <div class="w3-container w3-quarter">
+                <label for="radius"><b>Radius</b></label> <br>
+                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" style="width: 80%" placeholder=@radius @bind="radius" />&nbsp;
+            </div>
+            <div class="w3-container w3-quarter">
+                <label for="magnitude"><b>Magnitude</b></label> <br>
+                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" style="width: 80%" placeholder=@minmagnitude @bind="minmagnitude" />&nbsp;
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-container w3-quarter">
+                <label for="mindate"><b>From Date</b></label> <br>
+                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" style="width: 80%" placeholder=@startTime @bind="startTime" @bind:format="yyyy-MM-dd" />&nbsp;
+            </div>
+            <div class="w3-container w3-quarter">
+                <label for="maxdate"><b>Till Date</b></label> <br>
+                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" style="width: 80%"placeholder=@endTime @bind="endTime" @bind:format="yyyy-MM-dd" />&nbsp;
+            </div>
+            <div class="w3-container w3-quarter" style="padding-top:30px">
+                <button class="w3-button w3-dark-grey" @onclick="SearchSeisms">Search <i class="material-icons">search</i> </button>
+            </div>
+        </div>
+
+        </div>
+    <h2 style="font-size: 200%; font-weight: 600"> Results</h2>
+        <div class="w3-container w3-center" >
+            
+            @if (seisms == null)
+            {
+                <p><em>Loading...</em></p>
+            }
+            else
+            {
+        <div style="overflow: auto; height: 390px" class="full-height">
+            <table class="w3-table w3-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Magnitude</th>
+                        <th>Place</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var seism in seisms)
+                    {
+                        <tr>
+                            <th>@seism.dateSeism</th>
+                            <th>@seism.magnitude</th>
+                            <th>@seism.place</th>
+                            <th>@seism.latitude</th>
+                            <th>@seism.longitude</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+                    }
+                </div>
+            </div>
+
+
+    @code {
+        private float latitude = 0.0f;
+        private float longitude = 0.0f;
+        private float radius = 180.0f;
+        private float minmagnitude = 0.0f;
+        private List<SeismModel> seisms;
+        private DateTime startTime = new DateTime(2021 - 01 - 01);
+        private DateTime endTime = DateTime.Now;
+
+        async void SearchSeisms()
+        {
+            seisms = new List<SeismModel>();
+            List<SeismModel> allSeisms;
+            allSeisms = await _db.GetSeisms();
+            foreach (var Seism in allSeisms)
+            {
+                float lat = Seism.latitude;
+                float lon = Seism.longitude;
+                float mag = 0;
+                DateTime dt = Seism.dateSeism;
+                if (Seism.magnitude.HasValue)
+                {
+                    mag = Seism.magnitude.Value;
+                }
+                if ((lat <= (latitude + radius) && lat >= (latitude - radius)) &&
+                    (lon <= (longitude + radius) && lon >= (longitude - radius))
+                    && mag >= minmagnitude && (dt <= endTime && dt >= startTime))
+                    seisms.Add(Seism);
+            }
+            StateHasChanged();
+        }
+    }

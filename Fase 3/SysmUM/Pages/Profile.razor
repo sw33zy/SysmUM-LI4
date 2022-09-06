@@ -1,0 +1,149 @@
+﻿@page "/profile"
+@using SysmumDataAccessLibrary.Models
+@using SysmumDataAccessLibrary
+@using SysmUM.Data
+@inject IUserData _db
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IJSRuntime JSRuntime
+
+<body>
+    <!-- Profile Page -->
+    <div>
+        <!-- Left -->
+        <div class="full-height" style="background-color:#E3E3E3; float: left; width: 20%; padding: 2%; text-align: center;">
+            <div style="text-align: center; padding: 5%">
+                <img src="Images/profile.png">
+            </div>
+            <AuthorizeView>
+                <h3>@context.User.Identity.Name</h3>
+            </AuthorizeView>
+            <div>
+                <a href="profile" class="w3-button w3-grey w3-hover-grey" style="margin-left: 10%; margin-right: 10%; margin-top: 10%; margin-bottom: 5%; width: 80%; font-weight: 600;">Edit Profile</a>
+                <a href="location" class="w3-button w3-black" style="margin-left: 10%; margin-right: 10%; margin-top: 5%; margin-bottom: 5%; width: 80%; font-weight: 600;">Set Location</a>
+                <a href="alarmsettings" class="w3-button w3-black" style="margin-left: 10%; margin-right: 10%; margin-top: 5%; margin-bottom: 5%; width: 80%; font-weight: 600;">Edit alarm settings</a>
+            </div>
+            <div style="margin-top: 10%;">
+                <hr style="width: 90%; border-top: 1px solid #CFCFCF; margin: auto;">
+                <p>v 1.0.0</p>
+            </div>
+            <a href="/" @onclick="@Logout" class="w3-button w3-black" style="margin-left: 10%; margin-right: 10%; margin-top: 15%; margin-bottom: 5%; width: 80%; font-weight: 600;">Logout</a>
+        </div>
+        <!-- Center -->
+        <div class="full-height" style="background-color:#FBFBFB; float: left; width: 60%; padding: 2%;">
+            <h1 style="font-size: 400%; font-weight: 600"> Profile Settings</h1>
+            <EditForm Model="@user" OnValidSubmit="@UpdateUser" action="action_page.php">
+                <div class="w3-container">
+                    <hr>
+                    <div class="w3-section" style="width: 60%">
+                        <div class="w3-row" style="width: 100%">
+                            <div class="w3-container w3-left" style="width: 110.5%">
+                                <label for="firstname"><b>First Name</b></label> <br>
+                                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" @bind="user.name" type="text" style="width: 94%" placeholder="Insert Name" name="frstname">
+                            </div>
+                        </div>
+
+                        <div class="w3-container" style="width: 110.5%">
+                            <label for="email"><b>Email</b></label> <br>
+                            <input class="w3-input w3-border w3-margin-bottom w3-hover-border-dark-grey" style="width: 94%" @bind="user.email" type="email" placeholder="Email Address" name="email" id="email">
+                        </div>
+
+                        <div class="w3-row" style="width: 100%">
+                            <div class="w3-container w3-left">
+                                <label for="psw"><b>Current Password</b></label> <br>
+                                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" @bind=@oldPsw type="password" style="width: 110%" placeholder="Current Password" name="psw">
+                            </div>
+                            <div class="w3-container  w3-right">
+                                <label for="psw"><b>New Password</b></label> <br>
+                                <input class="w3-quarter w3-input w3-border w3-margin-bottom w3-margin-right w3-hover-border-dark-grey" @bind="user.password" type="password" style="width: 110%" placeholder="New Password" name="psw">
+                            </div>
+                        </div>
+                        <!-- <input class="w3-input w3-border w3-hover-border-dark-grey" style="width: auto" type="password" placeholder="Enter Password" name="psw"> -->
+
+
+                    </div>
+
+                    <hr>
+                    <div class="popup2" style="width: 100%;">
+                        <button type="submit" class="w3-button w3-black" style="margin-right: 10%; margin-top: 7%; margin-bottom: 5%; width: 30%; font-weight: 600;">Save Profile</button>
+                        <span class="popuptext" id="myPopup3">@LoginMesssage</span>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+        <!-- Right -->
+        <div class="full-height" style="background-color:#E3E3E3; float: left; width: 20%; padding-left: 1%; padding-right: 1%; padding-top: 1%; padding-bottom: 1%; text-align: center">
+            <h6 style="font-weight: 600; padding-bottom: 5%">STAY SAFE DURING AN EARTHQUAKE</h6>
+            <div class="w3-white" style="padding-left: 7%; padding-right: 7%; padding-top: 1%; padding-bottom: 1%; margin-bottom: 5%; border-style: solid; border-width: 3px; border-color: grey;">
+                <p style="text-align: justify; text-justify: inter-word;"><b>DROP down onto your hands and knees</b> before the earthquake knocks you down. This position protects you from falling but allows you to still move if necessary.</p>
+            </div>
+            <div class="w3-white" style="padding-left: 7%; padding-right: 7%; padding-top: 1%; padding-bottom: 1%; margin-bottom: 5%; border-style: solid; border-width: 3px; border-color: grey;">
+                <p style="text-align: justify; text-justify: inter-word;"><b>COVER your head and neck</b>  (and your entire body if possible) underneath a sturdy table or desk. If there is no shelter nearby, get down near an interior wall or next to low-lying furniture that won’t fall on you, and cover your head and neck with your arms and hands.</p>
+            </div>
+            <div class="w3-white" style="padding-left: 7%; padding-right: 7%; padding-top: 1%; padding-bottom: 1%; margin-bottom: 5%; border-style: solid; border-width: 3px; border-color: grey;">
+                <p style="text-align: justify; text-justify: inter-word;"><b>HOLD ON to your shelter</b> (or to your head and neck) until the shaking stops. Be prepared to move with your shelter if the shaking shifts it around.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+@code{
+    private UserSysmumModel user;
+    public string LoginMesssage;
+    public string oldPsw;
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = new UserSysmumModel();
+        string username = await sessionStorage.GetItemAsync<string>("username");
+        user.username = username;
+        List<UserSysmumModel> newuser = await _db.getUser(user);
+        UserSysmumModel loggedUser = newuser[0];
+
+        user.name = loggedUser.name;
+        user.email = loggedUser.email;
+        user.password = loggedUser.password;
+
+
+        StateHasChanged();
+
+    }
+
+    private async Task<bool> UpdateUser()
+    {
+        string username = await sessionStorage.GetItemAsync<string>("username");
+        user.username = username;
+        List<UserSysmumModel> olduser = await _db.getUser(user);
+
+        if (oldPsw == null)
+        {
+            LoginMesssage = "Insert Current Password";
+        }
+
+        else if (oldPsw.Equals(olduser[0].password))
+        {
+            LoginMesssage = "Profile Updated!";
+            olduser[0].name = user.name;
+            olduser[0].password = user.password;
+            olduser[0].email = user.email;
+            await _db.UpdateUser(olduser[0]);
+        }
+
+        else
+        {
+            LoginMesssage = "Wrong Password";
+        }
+
+        await JSRuntime.InvokeVoidAsync("popupProfile");
+        return await Task.FromResult(true);
+    }
+
+    public async void Logout()
+    {
+        ((Auth)AuthenticationStateProvider).MarkUserAsLoggedOut();
+        await JSRuntime.InvokeVoidAsync("reload");
+    }
+}

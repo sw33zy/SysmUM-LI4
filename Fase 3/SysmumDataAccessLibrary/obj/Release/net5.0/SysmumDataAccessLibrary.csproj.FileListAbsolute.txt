@@ -1,0 +1,12 @@
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Release\net5.0\SysmumDataAccessLibrary.deps.json
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Release\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Release\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\bin\Release\net5.0\SysmumDataAccessLibrary.pdb
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.csprojAssemblyReference.cache
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.AssemblyInfoInputs.cache
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.AssemblyInfo.cs
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\ref\SysmumDataAccessLibrary.dll
+C:\Users\Leonardo\Documents\GitHub\SysmUM\Fase 3\SysmumDataAccessLibrary\obj\Release\net5.0\SysmumDataAccessLibrary.pdb

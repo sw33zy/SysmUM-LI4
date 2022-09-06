@@ -1,0 +1,179 @@
+﻿@page "/fetchdataseism"
+
+@using SysmUM.Services
+@using SysmumDataAccessLibrary.Models
+@using SysmumDataAccessLibrary
+@inject SeismService  Service
+@inject ISeismData _db
+@inject IPositionData _dbPos
+
+<h1>Seisms</h1>
+
+<button class="btn btn-primary" @onclick="@removeList">Hide Seisms</button>
+<button class="btn btn-primary" @onclick="@updateListHour">Update Seisms Hour</button>
+<button class="btn btn-primary" @onclick="@updateListDay">Update Seisms Day</button>
+<button class="btn btn-primary" @onclick="@updateListWeek">Update Seisms Week</button>
+<button class="btn btn-primary" @onclick="@updateListMonth">Update Seisms Month</button>
+
+@if (seisms == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Seism Id</th>
+                <th>Radius</th>
+                <th>Magnitude</th>
+                <th>Place</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Significance</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var seism in seisms)
+            {
+                <tr>
+                    <th>@seism.id</th>
+                    <th>@seism.radius</th>
+                    <th>@seism.magnitude</th>
+                    <th>@seism.place</th>
+                    <th>@seism.latitude</th>
+                    <th>@seism.longitude</th>
+                    <th>@seism.significance</th>
+                    <th>@seism.dateSeism</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<SeismModel> seisms;
+
+    protected override async Task OnInitializedAsync()
+    {
+        /*List<SeismModel> seismsdata = await Service.GetSeisms();
+        foreach (var seism in seismsdata)
+        {
+            await _db.InsertSeism(seism);
+        }
+        seisms = await  _db.GetSeisms();
+        await base.InvokeAsync(StateHasChanged);*/
+        //SetTimer();
+    }
+
+    private async void SetTimer()
+    {
+        var startTimeSpan = TimeSpan.Zero;
+        var periodTimeSpan = TimeSpan.FromMinutes(1);
+
+        var timer = new System.Threading.Timer(async (e) =>
+        {
+            List<SeismModel> seismsdata = await Service.GetSeismsLastHour();
+            foreach (var seism in seismsdata)
+            {
+                bool found = false;
+                List<SeismModel> seismsindb = await _db.GetSeisms();
+                foreach(var s in seismsindb)
+                {
+                    if (s.id == seism.id)
+                        found = true;
+                }
+                if(!found)
+                    await _db.InsertSeism(seism);
+            }
+            seisms = await _db.GetSeisms();
+            await base.InvokeAsync(StateHasChanged);
+        }, null, startTimeSpan, periodTimeSpan);
+    }
+
+    private async void updateListHour()
+    {
+        List<SeismModel> seismsdata = await Service.GetSeismsLastHour();
+        foreach (var seism in seismsdata)
+        {
+            /*bool found = false;
+            List<SeismModel> seismsindb = await _db.GetSeisms();
+            foreach (var s in seismsindb)
+            {
+                if (s.id == seism.id)
+                    found = true;
+            }
+            if (!found)*/
+            await _db.InsertSeism(seism);
+        }
+        seisms = seismsdata;
+        //seisms = await _db.GetSeisms();
+        await base.InvokeAsync(StateHasChanged);
+    }
+
+    private async void updateListDay()
+    {
+        List<SeismModel> seismsdata = await Service.GetSeismsLastDay();
+        foreach (var seism in seismsdata)
+        {
+            /*bool found = false;
+            List<SeismModel> seismsindb = await _db.GetSeisms();
+            foreach (var s in seismsindb)
+            {
+                if (s.id == seism.id)
+                    found = true;
+            }
+            if (!found)*/
+            await _db.InsertSeism(seism);
+        }
+        seisms = seismsdata;
+        //seisms = await _db.GetSeisms();
+        await base.InvokeAsync(StateHasChanged);
+    }
+
+    private async void updateListWeek()
+    {
+        List<SeismModel> seismsdata = await Service.GetSeismsLastWeek();
+        foreach (var seism in seismsdata)
+        {
+            /*bool found = false;
+            List<SeismModel> seismsindb = await _db.GetSeisms();
+            foreach (var s in seismsindb)
+            {
+                if (s.id == seism.id)
+                    found = true;
+            }
+            if (!found)*/
+            await _db.InsertSeism(seism);
+        }
+        seisms = seismsdata;
+        //seisms = await _db.GetSeisms();
+        await base.InvokeAsync(StateHasChanged);
+    }
+
+    private async void updateListMonth()
+    {
+        List<SeismModel> seismsdata = await Service.GetSeisms();
+        foreach (var seism in seismsdata)
+        {
+            /*bool found = false;
+            List<SeismModel> seismsindb = await _db.GetSeisms();
+            foreach (var s in seismsindb)
+            {
+                if (s.id == seism.id)
+                    found = true;
+            }
+            if (!found)*/
+            await _db.InsertSeism(seism);
+        }
+        seisms = seismsdata;
+        //seisms = await _db.GetSeisms();
+        await base.InvokeAsync(StateHasChanged);
+    }
+
+    private void removeList()
+    {
+        seisms = null;
+    }
+}

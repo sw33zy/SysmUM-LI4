@@ -1,0 +1,143 @@
+﻿@page "/location"
+@using SysmumDataAccessLibrary.Models
+@using SysmumDataAccessLibrary
+@using SysmUM.Data
+@inject IUserData _db
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IJSRuntime JSRuntime
+<body>
+    <!-- Set Location Page -->
+    <div>
+        <!-- Left -->
+        <div class="full-height" style="background-color:#E3E3E3; float: left; width: 20%; padding: 2%; text-align: center;">
+            <div style="text-align: center; padding: 5%">
+                <img src="Images/profile.png">
+            </div>
+            <AuthorizeView>
+                <h3>@context.User.Identity.Name</h3>
+            </AuthorizeView>
+            <div>
+                <a href="profile" class="w3-button w3-black" style="margin-left: 10%; margin-right: 10%; margin-top: 10%; margin-bottom: 5%; width: 80%; font-weight: 600;">Edit Profile</a>
+                <a href="location" class="w3-button w3-grey w3-hover-grey" style="margin-left: 10%; margin-right: 10%; margin-top: 5%; margin-bottom: 5%; width: 80%; font-weight: 600;">Set Location</a>
+                <a href="alarmsettings" class="w3-button w3-black" style="margin-left: 10%; margin-right: 10%; margin-top: 5%; margin-bottom: 5%; width: 80%; font-weight: 600;">Edit alarm settings</a>
+            </div>
+            <div style="margin-top: 10%;">
+                <hr style="width: 90%; border-top: 1px solid #CFCFCF; margin: auto;">
+                <p>v 1.0.0</p>
+            </div>
+            <a href="/" @onclick="@Logout" class="w3-button w3-black" style="margin-left: 10%; margin-right: 10%; margin-top: 15%; margin-bottom: 5%; width: 80%; font-weight: 600;">Logout</a>
+        </div>
+        <!-- Center -->
+        <div class="full-height" style="background-color:#FBFBFB; float: left; width: 60%; padding: 2%;">
+            <h1 style="font-size: 400%; font-weight: 600">Set Location</h1>
+
+            <EditForm Model="@user" OnValidSubmit="@UpdateLocation" action="action_page.php">
+                <div class="w3-container w3-row">
+
+                    <div class="w3-section w3-left" style="width: 40%">
+
+
+                        <div class="w3-container" style="width: 60%">
+                            <label for="latitude"><b>Latitude</b></label> <br>
+                            <input class="w3-input w3-border w3-margin-bottom w3-hover-border-dark-grey" style="width: 100%" type="text" @bind="user.latitude" placeholder="Latitude" name="latitude" id="latitude" required>
+                        </div>
+
+                        <div class="w3-container" style="width: 60%">
+                            <label for="longitude"><b>Longitude</b></label> <br>
+                            <input class="w3-input w3-border w3-margin-bottom w3-hover-border-dark-grey" style="width: 100%" type="text" @bind="user.longitude" placeholder="Longitude" name="longitude" id="longitude" required>
+                        </div>
+
+                        <div class="popup3" style="width: 100%;">
+                            <button type="submit" class="w3-button w3-black" style="margin-right: 10%; margin-top: 50%; margin-bottom: 5%; width: 50%; font-weight: 600;">Set Location</button>
+                            <span class="popuptext" id="myPopup4">@LoginMesssage</span>
+                        </div>
+                        </div>
+
+                        <div class="w3-section w3-right" style="width: 60%">
+
+
+                            <div style="text-align: center; padding: 5%">
+                                <img src="Images/location.png">
+                            </div>
+
+                        </div>
+                    </div>
+
+            </EditForm>
+        </div>
+        <!-- Right -->
+        <div class="full-height" style="background-color:#E3E3E3; float: left; width: 20%; padding-left: 1%; padding-right: 1%; padding-top: 1%; padding-bottom: 1%; text-align: center">
+            <h6 style="font-weight: 600; padding-bottom: 5%">STAY SAFE DURING AN EARTHQUAKE</h6>
+            <div class="w3-white" style="padding-left: 7%; padding-right: 7%; padding-top: 1%; padding-bottom: 1%; margin-bottom: 5%; border-style: solid; border-width: 3px; border-color: grey;">
+                <p style="text-align: justify; text-justify: inter-word;"><b>DROP down onto your hands and knees</b> before the earthquake knocks you down. This position protects you from falling but allows you to still move if necessary.</p>
+            </div>
+            <div class="w3-white" style="padding-left: 7%; padding-right: 7%; padding-top: 1%; padding-bottom: 1%; margin-bottom: 5%; border-style: solid; border-width: 3px; border-color: grey;">
+                <p style="text-align: justify; text-justify: inter-word;"><b>COVER your head and neck</b>  (and your entire body if possible) underneath a sturdy table or desk. If there is no shelter nearby, get down near an interior wall or next to low-lying furniture that won’t fall on you, and cover your head and neck with your arms and hands.</p>
+            </div>
+            <div class="w3-white" style="padding-left: 7%; padding-right: 7%; padding-top: 1%; padding-bottom: 1%; margin-bottom: 5%; border-style: solid; border-width: 3px; border-color: grey;">
+                <p style="text-align: justify; text-justify: inter-word;"><b>HOLD ON to your shelter</b> (or to your head and neck) until the shaking stops. Be prepared to move with your shelter if the shaking shifts it around.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@code{
+
+    private UserSysmumModel user;
+    private string LoginMesssage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = new UserSysmumModel();
+        string username = await sessionStorage.GetItemAsync<string>("username");
+        user.username = username;
+        List<UserSysmumModel> newuser = await _db.getUser(user);
+        UserSysmumModel loggedUser = newuser[0];
+
+        user.latitude = loggedUser.latitude;
+        user.longitude = loggedUser.longitude;
+
+        StateHasChanged();
+
+    }
+
+    private async Task<bool> UpdateLocation()
+    {
+        string username = await sessionStorage.GetItemAsync<string>("username");
+        user.username = username;
+        List<UserSysmumModel> olduser = await _db.getUser(user);
+
+        if ((user.latitude <= - 90 ) || (user.latitude >= 90))
+        {
+            LoginMesssage = "Latitude should be a value between -90 and +90";
+        }
+
+        else
+        {
+            if ((user.longitude <= -180 ) || (user.longitude >= 180))
+            {
+                LoginMesssage = "Longitude should be a value between -180 and +180";
+            }
+
+            else
+            {
+                LoginMesssage = "Profile Updated!";
+                olduser[0].latitude = user.latitude;
+                olduser[0].longitude = user.longitude;
+                await _db.UpdateUser(olduser[0]);
+            }
+        }
+
+        await JSRuntime.InvokeVoidAsync("popupLocal");
+        return await Task.FromResult(true);
+    }
+
+    public async void Logout()
+    {
+        ((Auth)AuthenticationStateProvider).MarkUserAsLoggedOut();
+        await JSRuntime.InvokeVoidAsync("reload");
+    }
+}

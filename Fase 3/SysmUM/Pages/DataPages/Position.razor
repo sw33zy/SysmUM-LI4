@@ -1,0 +1,44 @@
+﻿@page "/DataPages/Position"
+
+@using SysmumDataAccessLibrary
+@using SysmumDataAccessLibrary.Models
+
+@inject IPositionData _db
+
+<h1>Position Test Page</h1>
+
+<h4>Positions Listed</h4>
+@if (positions is null)
+{
+    <p><em>Empty</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Latitude</th>
+                <th>Longitude</th>
+            </tr>
+        </thead>    
+        <tbody>
+            @foreach (var position in positions)
+            { 
+                <tr>
+                    <td>@position.latitude</td>
+                    <td>@position.longitude</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<PositionModel> positions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        positions = await _db.GetPositions();
+    }
+
+}

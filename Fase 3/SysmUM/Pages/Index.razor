@@ -1,0 +1,109 @@
+﻿@page "/"
+<!-- Landing Page -->
+
+<div class="w3-container w3-light-grey w3-padding">
+    <div style="padding-top:1% ; padding-bottom: 1%; width: 50%" class="w3-left">
+        <div style="padding-left: 20%">
+            <h1 class="w3-xxxlarge">What are we?</h1>
+            <h4 style="color: #7F7F7F">SysmUM is a real time earthquake monitoring <br>system that notifies you every time you are in the <br>vicinity of an earthquake. </h4>
+            <div class="w3-padding-32">
+                <AuthorizeView>
+                    <NotAuthorized>
+                        <a onclick="document.getElementById('id01').style.display='block'" href="#" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey w3-animate-bottom" style="font-weight:600; border-radius: 5px; animation-duration: 0.5s;">Register</a>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
+    </div>
+    <div class="w3-right" style="padding-right: 25%">
+        <img src="Images/landing1.png" style="margin: 10px; height: 260px">
+    </div>
+</div>
+
+<Register />
+<Login />
+
+<!-- Cards -->
+
+<div class="w3-row-padding w3-center w3-margin-top">
+
+    <div class="w3-col" style="width:37%; padding-left:20px">
+        <img src="Images/map.png" style="height: 340px">
+    </div>
+
+    <div class="w3-col w3-animate-bottom" style="width:21%; animation-duration: 0.5s;">
+        <div class="w3-card" style="min-height:350px">
+            <div class="w3-dark-grey" style="padding-top:5% ; padding-bottom: 5%">
+                <img src="Images/card1.png" style="height: 60px">
+            </div>
+            <div style="padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 5px">
+                <p style="font-weight:600; font-size:20px; text-align: left;">Check seismic activity</p>
+                <p style="text-align: left;">Allows you to inspect current seismic activity at your location or others desired. You can also check previous earthquakes within a  given time interval. </p>
+            </div>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="w3-btn w3-small w3-dark-grey w3-hover-light-grey" style="width: 180px; font-weight:600; border-radius: 5px; height:32px">
+                        <i class=" w3-large material-icons">arrow_forward</i>
+                    </button>
+                </NotAuthorized>
+                <Authorized>
+                    <a href="current" class="w3-btn w3-small w3-dark-grey w3-hover-light-grey" style="width: 180px; font-weight:600; border-radius: 5px; height:32px">
+                        <i class=" w3-large material-icons">arrow_forward</i>
+                    </a>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+    </div>
+
+    <div class="w3-col w3-animate-bottom" style="width:21%; animation-duration: 1s;">
+        <div class="w3-card" style="min-height:350px">
+            <div class="w3-dark-grey" style="padding-top:5% ; padding-bottom: 5%">
+                <img src="Images/card2.png" style="height: 60px">
+            </div>
+            <div style="padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 5px">
+                <p style="font-weight:600; font-size:20px; text-align: left;">Be safe</p>
+                <p style="text-align: left;">
+                    Every time you are within radius of an earthquake, recieve a warning. You are allowed to filter these warnings based on radius and magnitude.
+                </p>
+            </div>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="w3-btn w3-small w3-dark-grey w3-hover-light-grey" style="width: 180px; font-weight:600; border-radius: 5px; height:32px">
+                        <i class=" w3-large material-icons">arrow_forward</i>
+                    </button>
+                </NotAuthorized>
+                <Authorized>
+                    <a href="queries" class="w3-btn w3-small w3-dark-grey w3-hover-light-grey" style="width: 180px; font-weight:600; border-radius: 5px; height:32px">
+                        <i class=" w3-large material-icons">arrow_forward</i>
+                    </a>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+    </div>
+
+    <div class="w3-col w3-animate-bottom" style="width:21%; animation-duration: 1.5s;">
+        <div class="w3-card" style="min-height:350px">
+            <div class="w3-dark-grey" style="padding-top:5% ; padding-bottom: 5%">
+                <img src="Images/card3.png" style="height: 60px">
+            </div>
+            <div style="padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 50px;">
+                <p style="font-weight:600; font-size:20px; text-align: left;">Protection prevision</p>
+                <p style="text-align: left;">Based on your current location's seismic history, estimates your safety level. </p>
+            </div>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="w3-btn w3-small w3-dark-grey w3-hover-light-grey" style="width: 180px; font-weight:600; border-radius: 5px; height:32px">
+                        <i class=" w3-large material-icons">arrow_forward</i>
+                    </button>
+                </NotAuthorized>
+                <Authorized>
+                    <a href="queries" class="w3-btn w3-small w3-dark-grey w3-hover-light-grey" style="width: 180px; font-weight:600; border-radius: 5px; height:32px">
+                        <i class=" w3-large material-icons">arrow_forward</i>
+                    </a>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+    </div>
+</div>
+
+
